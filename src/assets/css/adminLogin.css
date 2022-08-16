@@ -1,0 +1,34 @@
+.wrap {
+  background-color: #D8CCC1;
+  margin: 0 20px;
+  height: 100vh;
+}
+
+input:focus {
+  outline: none;
+}
+
+.error-input {
+  border: 1px solid #FF0000;
+}
+
+.error-message {
+  position: absolute;
+  color: #FF0000;
+  font-weight: 600;
+}
+
+.send-btn {
+  border-radius: 50px;
+  border: none;
+  background-color: #435363;
+  color: #FFFFFF;
+}
+
+.send-btn:focus {
+  outline: none;
+}
+
+.send-btn:active {
+  transform: scale(0.98);
+}
