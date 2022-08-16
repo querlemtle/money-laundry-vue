@@ -14,6 +14,11 @@ const routes = [
     name: "adminLogin",
     component: () => import("../views/adminLogin.vue"),
   },
+  {
+    path: "/admin/dashboard",
+    name: "adminDashboard",
+    component: () => import("../views/adminDashboard.vue"),
+  },
 ];
 
 const router = new VueRouter({
