@@ -41,7 +41,7 @@
 import SiteHeader from "../components/SiteHeader.vue";
 
 export default {
-  name: "adminLogin",
+  name: "AdminLogin",
   components: {
     SiteHeader,
   },
@@ -76,4 +76,4 @@ export default {
 };
 </script>
 
-<style scoped src="@/assets/css/adminLogin.css"></style>
+<style scoped src="@/assets/css/AdminLogin.css"></style>
