@@ -49,6 +49,11 @@ const routes = [
     ],
   },
   {
+    path: "/user",
+    name: "User",
+    component: () => import("../views/User.vue"),
+  },
+  {
     path: "*",
     name: "not-found",
     component: NotFound,
