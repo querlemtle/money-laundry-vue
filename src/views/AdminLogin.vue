@@ -76,4 +76,4 @@ export default {
 };
 </script>
 
-<style scoped src="@/assets/css/AdminLogin.css"></style>
+<style scoped src="@/assets/css/adminLogin.css"></style>
