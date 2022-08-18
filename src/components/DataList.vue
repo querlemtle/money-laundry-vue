@@ -2,8 +2,6 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h1>{{ title }}</h1>
-        <p>{{ message }}</p>
         <table class="table">
           <thead class="table-head">
             <tr>
@@ -246,5 +244,11 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  name: "DataList",
+};
+</script>
 
 <style scoped src="@/assets/css/DataList.css"></style>

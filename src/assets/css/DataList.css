@@ -20,6 +20,11 @@ span {
   color: black;
 }
 
+.fa-pen-to-square,
+.fa-trash-can {
+  cursor: pointer;
+}
+
 .fa-pen-to-square {
   color: #435363;
 }
