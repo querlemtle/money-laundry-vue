@@ -11,6 +11,7 @@
         :key="i.id"
         @click="getcategory(i.id, i.type)"
         :class="{ animate__backOutDown: isAnimate }"
+        :disabled="isDisabled"
       >
         <div>
           {{ i.type }}
@@ -22,6 +23,7 @@
         :key="i.id"
         @click="getResult(i.isLegal, i.law, i.description)"
         :class="{ animate__backOutDown: isAnimate }"
+        :disabled="isDisabled"
       >
         <div>
           {{ i.name }}
@@ -63,6 +65,7 @@ export default {
       isAnimate: false,
       isError: false,
       isWinner: false,
+      isDisabled: false,
     };
   },
   components: {
@@ -80,7 +83,6 @@ export default {
         this.categories = response.data.data;
       } catch (error) {
         console.log(error.response.data.message);
-        // this.isLoading = false;
       }
     },
     async fetchGamequestion(id) {
@@ -102,7 +104,6 @@ export default {
         this.isAns = true;
       } catch (error) {
         console.log(error.response.data.message);
-        // this.isLoading = false;
       }
     },
     async fetchGameitems(id) {
@@ -117,18 +118,20 @@ export default {
         // console.log(response.data.data.Items);
         this.gameitems = response.data.data.Items;
         this.isAnimate = false;
+        this.isDisabled = false;
       } catch (error) {
         console.log(error.response.data.message);
-        // this.isLoading = false;
       }
     },
     async getcategory(category, type) {
+      this.isDisabled = true;
       this.categoryId = category;
       this.typetitle = type;
       await this.fetchGamequestion(this.categoryId);
       await this.fetchGameitems(this.gamequestionid);
     },
     getResult(isLegal, law, description) {
+      this.isDisabled = true;
       if (isLegal) {
         if (this.gamelevel === 5) {
           this.isWinner = true;
