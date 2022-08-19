@@ -20,7 +20,7 @@
         class="item dashed animate__animated animate__backInDown"
         v-for="i in gameitems"
         :key="i.id"
-        @click="getResult(i.ans, i.law, i.description)"
+        @click="getResult(i.isLegal, i.law, i.description)"
         :class="{ animate__backOutDown: isAnimate }"
       >
         <div>
@@ -59,7 +59,7 @@ export default {
       gamelaw: "",
       gamedescription: "",
       levellist: [],
-      isAns: false,
+      isLegal: false,
       isAnimate: false,
       isError: false,
       isWinner: false,
@@ -97,7 +97,7 @@ export default {
         this.levellist = JSON.parse(JSON.stringify(data));
         this.gamequestionid = this.levellist[this.gamelevel - 1].id;
         // console.log(this.gamequestionid);
-        this.gamequestion = "Q" + this.gamelevel + ".以下情境何者沒有犯法？";
+        this.gamequestion = "Q" + this.gamelevel + ". 以下情境何者沒有犯法？";
         this.isAnimate = false;
         this.isAns = true;
       } catch (error) {
@@ -128,14 +128,14 @@ export default {
       await this.fetchGamequestion(this.categoryId);
       await this.fetchGameitems(this.gamequestionid);
     },
-    getResult(ans, law, description) {
-      if (ans) {
+    getResult(isLegal, law, description) {
+      if (isLegal) {
         if (this.gamelevel === 5) {
           this.isWinner = true;
         } else {
           this.gamelevel++;
           this.gamequestionid = this.levellist[this.gamelevel - 1].id;
-          this.gamequestion = "Q" + this.gamelevel + ".以下情境何者沒有犯法？";
+          this.gamequestion = "Q" + this.gamelevel + ". 以下情境何者沒有犯法？";
           this.fetchGameitems(this.gamequestionid);
         }
       } else {
@@ -198,8 +198,9 @@ export default {
 
 .title {
   display: block;
+  width: 350px;
   font-size: 45px;
-  /* width: 300px; */
+  text-align: start;
   height: 120px;
   padding: 0 10px;
   overflow-wrap: break-word;
