@@ -21,7 +21,11 @@
             <router-link class="nav-link" to="gamble">賭博</router-link>
           </li>
           <li class="ms-auto">
-            <button type="button" class="btn btn-warning">新增選項</button>
+            <router-link
+              class="btn btn-warning"
+              :to="{ path: '/admin/option/new' }"
+              >新增選項</router-link
+            >
           </li>
         </ul>
       </div>
@@ -29,4 +33,4 @@
   </div>
 </template>
 
-<style scoped src="@/assets/css/Tabs.css"></style>
+<style scoped src="@/assets/css/adminNavPills.css"></style>

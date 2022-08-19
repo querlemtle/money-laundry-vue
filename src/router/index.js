@@ -49,6 +49,11 @@ const routes = [
     ],
   },
   {
+    path: "/admin/option/new",
+    name: "admin-option-new",
+    component: () => import("../views/CreateOption.vue"),
+  },
+  {
     path: "/user",
     name: "User",
     component: () => import("../views/User.vue"),

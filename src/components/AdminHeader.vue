@@ -14,4 +14,4 @@
   </header>
 </template>
 
-<style scoped src="@/assets/css/Header.css"></style>
+<style scoped src="@/assets/css/adminHeader.css"></style>
