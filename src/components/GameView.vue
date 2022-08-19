@@ -11,6 +11,7 @@
         :key="i.id"
         @click="getcategory(i.id, i.type)"
         :class="{ animate__backOutDown: isAnimate }"
+        :disabled="isDisabled"
       >
         <div>
           {{ i.type }}
@@ -20,8 +21,9 @@
         class="item dashed animate__animated animate__backInDown"
         v-for="i in gameitems"
         :key="i.id"
-        @click="getResult(i.ans, i.law, i.description)"
+        @click="getResult(i.isLegal, i.law, i.description)"
         :class="{ animate__backOutDown: isAnimate }"
+        :disabled="isDisabled"
       >
         <div>
           {{ i.name }}
@@ -59,10 +61,11 @@ export default {
       gamelaw: "",
       gamedescription: "",
       levellist: [],
-      isAns: false,
+      isLegal: false,
       isAnimate: false,
       isError: false,
       isWinner: false,
+      isDisabled: false,
     };
   },
   components: {
@@ -80,7 +83,6 @@ export default {
         this.categories = response.data.data;
       } catch (error) {
         console.log(error.response.data.message);
-        // this.isLoading = false;
       }
     },
     async fetchGamequestion(id) {
@@ -97,12 +99,11 @@ export default {
         this.levellist = JSON.parse(JSON.stringify(data));
         this.gamequestionid = this.levellist[this.gamelevel - 1].id;
         // console.log(this.gamequestionid);
-        this.gamequestion = "Q" + this.gamelevel + ".以下情境何者沒有犯法？";
+        this.gamequestion = "Q" + this.gamelevel + ". 以下情境何者沒有犯法？";
         this.isAnimate = false;
         this.isAns = true;
       } catch (error) {
         console.log(error.response.data.message);
-        // this.isLoading = false;
       }
     },
     async fetchGameitems(id) {
@@ -117,25 +118,27 @@ export default {
         // console.log(response.data.data.Items);
         this.gameitems = response.data.data.Items;
         this.isAnimate = false;
+        this.isDisabled = false;
       } catch (error) {
         console.log(error.response.data.message);
-        // this.isLoading = false;
       }
     },
     async getcategory(category, type) {
+      this.isDisabled = true;
       this.categoryId = category;
       this.typetitle = type;
       await this.fetchGamequestion(this.categoryId);
       await this.fetchGameitems(this.gamequestionid);
     },
-    getResult(ans, law, description) {
-      if (ans) {
+    getResult(isLegal, law, description) {
+      this.isDisabled = true;
+      if (isLegal) {
         if (this.gamelevel === 5) {
           this.isWinner = true;
         } else {
           this.gamelevel++;
           this.gamequestionid = this.levellist[this.gamelevel - 1].id;
-          this.gamequestion = "Q" + this.gamelevel + ".以下情境何者沒有犯法？";
+          this.gamequestion = "Q" + this.gamelevel + ". 以下情境何者沒有犯法？";
           this.fetchGameitems(this.gamequestionid);
         }
       } else {
@@ -198,8 +201,9 @@ export default {
 
 .title {
   display: block;
+  width: 350px;
   font-size: 45px;
-  /* width: 300px; */
+  text-align: start;
   height: 120px;
   padding: 0 10px;
   overflow-wrap: break-word;
