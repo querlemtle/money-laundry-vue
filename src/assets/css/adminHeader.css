@@ -20,3 +20,12 @@
   color: black;
   text-decoration: none;
 }
+
+.site-header div {
+  color: #CB5252;
+  cursor: pointer;
+}
+
+.site-header div:hover {
+  text-decoration: underline;
+}

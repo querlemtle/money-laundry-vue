@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import userAPI from "./../api/getapi";
+import userAPI from "../api/gameapi";
 import GameResult from "../components/GameResult.vue";
 
 export default {
@@ -91,7 +91,7 @@ export default {
         const response = await userAPI.getgamequestion(id);
 
         if (response.status !== 200) {
-          throw new Error(response.message);
+          throw new Error(response.data.message);
         }
         // console.log(response.data);
 
