@@ -27,8 +27,23 @@ const routes = [
         component: () => import("../components/DataList.vue"),
       },
       {
-        path: ":category_id",
-        name: "category_id",
+        path: "jobs",
+        name: "dashboard-jobs",
+        component: () => import("../components/DataList.vue"),
+      },
+      {
+        path: "startup",
+        name: "dashboard-startup",
+        component: () => import("../components/DataList.vue"),
+      },
+      {
+        path: "investment",
+        name: "dashboard-investment",
+        component: () => import("../components/DataList.vue"),
+      },
+      {
+        path: "gamble",
+        name: "dashboard-gamble",
         component: () => import("../components/DataList.vue"),
       },
     ],
@@ -39,9 +54,9 @@ const routes = [
     component: () => import("../views/CreateOption.vue"),
   },
   {
-    path: "/game",
+    path: "/user",
     name: "User",
-    component: () => import("../views/Game.vue"),
+    component: () => import("../views/User.vue"),
   },
   {
     path: "*",
