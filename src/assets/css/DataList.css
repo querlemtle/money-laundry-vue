@@ -13,7 +13,7 @@ tbody tr:nth-child(even) {
 
 span {
   display: inline-block;
-  width: 20px;
+  margin-left: 20px;
 }
 
 .c-black {
@@ -31,12 +31,4 @@ span {
 
 .fa-trash-can {
   color: #802626;
-}
-
-.page-item a {
-  color: #802626;
-}
-
-.disabled a {
-  color: #D8CCC1;
 }

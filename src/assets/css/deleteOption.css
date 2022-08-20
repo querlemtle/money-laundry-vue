@@ -1,0 +1,40 @@
+.box {
+  margin: 0 auto;
+  margin-top: 25%;
+  width: 600px;
+  height: 30%;
+  background-color: #fff;
+  padding: 0px 40px;
+  padding-top: 50px;
+}
+
+.fa-triangle-exclamation {
+  color: #DFB084;
+}
+
+.text {
+  width: 80%;
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.title{
+  margin-bottom: 20px;
+}
+
+.content {
+  font-size: 24px;
+}
+
+.btnarea {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 50px;
+}
+
+.btn  {
+  margin-right: 10px;
+}

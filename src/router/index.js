@@ -27,23 +27,8 @@ const routes = [
         component: () => import("../components/DataList.vue"),
       },
       {
-        path: "jobs",
-        name: "dashboard-jobs",
-        component: () => import("../components/DataList.vue"),
-      },
-      {
-        path: "startup",
-        name: "dashboard-startup",
-        component: () => import("../components/DataList.vue"),
-      },
-      {
-        path: "investment",
-        name: "dashboard-investment",
-        component: () => import("../components/DataList.vue"),
-      },
-      {
-        path: "gamble",
-        name: "dashboard-gamble",
+        path: ":category_id",
+        name: "category_id",
         component: () => import("../components/DataList.vue"),
       },
     ],
@@ -53,15 +38,15 @@ const routes = [
     name: "admin-option-new",
     component: () => import("../views/CreateOption.vue"),
   },
-  {
+  {   
     path: "/admin/option/:option_id",
     name: "admin-option-edit",
     component: () => import("../views/EditOption.vue"),
   },
   {
-    path: "/user",
+    path: "/game",
     name: "User",
-    component: () => import("../views/User.vue"),
+    component: () => import("../views/Game.vue"),
   },
   {
     path: "*",

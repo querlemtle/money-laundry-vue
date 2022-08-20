@@ -7,7 +7,9 @@
         <img src="../assets/pictures/logo.svg" alt="logo" />
       </a>
       <a class="py-2 d-none d-md-inline-block" href="#">資訊查詢</a>
-      <a class="py-2 d-none d-md-inline-block" href="#">遊戲專區</a>
+      <router-link class="py-2 d-none d-md-inline-block" to="/game"
+        >遊戲專區</router-link
+      >
       <a class="py-2 d-none d-md-inline-block" href="#">與我聯絡</a>
       <router-link class="py-2 d-none d-md-inline-block" to="/admin/login"
         >管理者登入</router-link
