@@ -54,6 +54,11 @@ const routes = [
     component: () => import("../views/CreateOption.vue"),
   },
   {
+    path: "/admin/option/:option_id",
+    name: "admin-option-edit",
+    component: () => import("../views/EditOption.vue"),
+  },
+  {
     path: "/user",
     name: "User",
     component: () => import("../views/User.vue"),
