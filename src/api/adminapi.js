@@ -8,6 +8,7 @@ export default {
       password,
     });
   },
+
   getlatest() {
     return apiHelper.get("/admin/items/latest_10", {
       headers: { Authorization: `Bearer ${getToken()}` },
@@ -22,5 +23,19 @@ export default {
     return apiHelper.delete(`/admin/items/${item_id}`, {
       headers: { Authorization: `Bearer ${getToken()}` },
     });
+
+  getSuggestLevels({ categoryId }) {
+    return apiHelper.get(`/admin/categories/${categoryId}/suggest_levels`, {
+      headers: { Authorization: `Bearer ${getToken()}` },
+    });
+  },
+  addOption({ formData, isPublished }) {
+    return apiHelper.post(
+      "/admin/item",
+      { formData, isPublished },
+      {
+        headers: { Authorization: `Bearer ${getToken()}` },
+      }
+    );
   },
 };
