@@ -95,7 +95,7 @@ export default {
         }
         // console.log(response.data);
 
-        const data = response.data.data.Games;
+        const data = response.data.data.Levels;
         this.levellist = JSON.parse(JSON.stringify(data));
         this.gamequestionid = this.levellist[this.gamelevel - 1].id;
         // console.log(this.gamequestionid);
@@ -115,7 +115,7 @@ export default {
         if (response.status !== 200) {
           throw new Error(response.message);
         }
-        // console.log(response.data.data.Items);
+        console.log(response.data.data.Items);
         this.gameitems = response.data.data.Items;
         this.isAnimate = false;
         this.isDisabled = false;

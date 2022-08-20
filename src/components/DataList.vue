@@ -17,237 +17,49 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">求職</th>
-              <td>1</td>
-              <td>提供銀行帳戶給親戚使用...</td>
-              <td>已發佈</td>
-              <td>3 小時前</td>
-              <td>是</td>
+            <tr v-for="i in itemlist" :key="i.id">
+              <th scope="row">{{ i.category }}</th>
+              <td>{{ i.level }}</td>
+              <td>{{ i.name }}</td>
+              <td>{{ i.isPublished ? "已發布" : "草稿" }}</td>
+              <td>{{ i.updatedAt | fromNow }}</td>
+              <td>{{ i.isLegal ? "是" : "否" }}</td>
               <td>
-                <i class="fa-solid fa-pen-to-square"></i>
-                <span></span>
-                <i class="fa-solid fa-trash-can"></i>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">求職</th>
-              <td>1</td>
-              <td>請問以下情境，何者沒有...</td>
-              <td>已發佈</td>
-              <td>3 小時前</td>
-              <td>是</td>
-              <td>
-                <i class="fa-solid fa-pen-to-square"></i>
-                <span></span>
-                <i class="fa-solid fa-trash-can"></i>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">求職</th>
-              <td>1</td>
-              <td>提供銀行帳戶給親戚使用...</td>
-              <td>已發佈</td>
-              <td>3 小時前</td>
-              <td>是</td>
-              <td>
-                <i class="fa-solid fa-pen-to-square"></i>
-                <span></span>
-                <i class="fa-solid fa-trash-can"></i>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">求職</th>
-              <td>1</td>
-              <td>請問以下情境，何者沒有...</td>
-              <td>已發佈</td>
-              <td>3 小時前</td>
-              <td>是</td>
-              <td>
-                <i class="fa-solid fa-pen-to-square"></i>
-                <span></span>
-                <i class="fa-solid fa-trash-can"></i>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">求職</th>
-              <td>1</td>
-              <td>提供銀行帳戶給親戚使用...</td>
-              <td>已發佈</td>
-              <td>3 小時前</td>
-              <td>是</td>
-              <td>
-                <i class="fa-solid fa-pen-to-square"></i>
-                <span></span>
-                <i class="fa-solid fa-trash-can"></i>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">求職</th>
-              <td>1</td>
-              <td>請問以下情境，何者沒有...</td>
-              <td>已發佈</td>
-              <td>3 小時前</td>
-              <td>是</td>
-              <td>
-                <i class="fa-solid fa-pen-to-square"></i>
-                <span></span>
-                <i class="fa-solid fa-trash-can"></i>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">求職</th>
-              <td>1</td>
-              <td>提供銀行帳戶給親戚使用...</td>
-              <td>已發佈</td>
-              <td>3 小時前</td>
-              <td>是</td>
-              <td>
-                <i class="fa-solid fa-pen-to-square"></i>
-                <span></span>
-                <i class="fa-solid fa-trash-can"></i>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">求職</th>
-              <td>1</td>
-              <td>請問以下情境，何者沒有...</td>
-              <td>已發佈</td>
-              <td>3 小時前</td>
-              <td>是</td>
-              <td>
-                <i class="fa-solid fa-pen-to-square"></i>
-                <span></span>
-                <i class="fa-solid fa-trash-can"></i>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">求職</th>
-              <td>1</td>
-              <td>提供銀行帳戶給親戚使用...</td>
-              <td>已發佈</td>
-              <td>3 小時前</td>
-              <td>是</td>
-              <td>
-                <i class="fa-solid fa-pen-to-square"></i>
-                <span></span>
-                <i class="fa-solid fa-trash-can"></i>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">求職</th>
-              <td>1</td>
-              <td>請問以下情境，何者沒有...</td>
-              <td>已發佈</td>
-              <td>3 小時前</td>
-              <td>是</td>
-              <td>
-                <i class="fa-solid fa-pen-to-square"></i>
-                <span></span>
-                <i class="fa-solid fa-trash-can"></i>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">求職</th>
-              <td>1</td>
-              <td>提供銀行帳戶給親戚使用...</td>
-              <td>已發佈</td>
-              <td>3 小時前</td>
-              <td>是</td>
-              <td>
-                <i class="fa-solid fa-pen-to-square"></i>
-                <span></span>
-                <i class="fa-solid fa-trash-can"></i>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">求職</th>
-              <td>1</td>
-              <td>請問以下情境，何者沒有...</td>
-              <td>已發佈</td>
-              <td>3 小時前</td>
-              <td>是</td>
-              <td>
-                <i class="fa-solid fa-pen-to-square"></i>
-                <span></span>
-                <i class="fa-solid fa-trash-can"></i>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">求職</th>
-              <td>1</td>
-              <td>提供銀行帳戶給親戚使用...</td>
-              <td>已發佈</td>
-              <td>3 小時前</td>
-              <td>是</td>
-              <td>
-                <i class="fa-solid fa-pen-to-square"></i>
-                <span></span>
-                <i class="fa-solid fa-trash-can"></i>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">求職</th>
-              <td>1</td>
-              <td>請問以下情境，何者沒有...</td>
-              <td>已發佈</td>
-              <td>3 小時前</td>
-              <td>是</td>
-              <td>
-                <i class="fa-solid fa-pen-to-square"></i>
-                <span></span>
-                <i class="fa-solid fa-trash-can"></i>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">求職</th>
-              <td>1</td>
-              <td>提供銀行帳戶給親戚使用...</td>
-              <td>已發佈</td>
-              <td>3 小時前</td>
-              <td>是</td>
-              <td>
-                <i class="fa-solid fa-pen-to-square"></i>
-                <span></span>
-                <i class="fa-solid fa-trash-can"></i>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">求職</th>
-              <td>1</td>
-              <td>請問以下情境，何者沒有...</td>
-              <td>已發佈</td>
-              <td>3 小時前</td>
-              <td>是</td>
-              <td>
-                <i class="fa-solid fa-pen-to-square"></i>
-                <span></span>
-                <i class="fa-solid fa-trash-can"></i>
+                <span @click="edititem(i.id)"
+                  ><i class="fa-solid fa-pen-to-square"></i
+                ></span>
+                <span @click="deleteitem(i.name, i.id)"
+                  ><i class="fa-solid fa-trash-can"></i
+                ></span>
               </td>
             </tr>
           </tbody>
         </table>
-        <nav aria-label="Page navigation example">
-          <ul class="pagination justify-content-end">
-            <li class="page-item disabled">
-              <a class="page-link">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#">Next</a>
-            </li>
-          </ul>
-        </nav>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { fromNowFilter } from "../utils/mixins";
+
 export default {
   name: "DataList",
+  props: {
+    itemlist: {
+      type: Array,
+      required: true,
+    },
+  },
+  mixins: [fromNowFilter],
+  methods: {
+    edititem(id) {
+      console.log("edit", id);
+    },
+    deleteitem(name, id) {
+      this.$emit("delete", name, id);
+    },
+  },
 };
 </script>
 
