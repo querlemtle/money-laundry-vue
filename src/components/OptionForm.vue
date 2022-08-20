@@ -140,6 +140,15 @@ export default {
       description: "",
       law: "",
       isPublished: false,
+      toadd: {
+        categoryId: 0,
+        name: "",
+        levelId: 0,
+        isLegal: true,
+        description: "",
+        law: "",
+        isPublished: false,
+      },
     };
   },
   methods: {
@@ -169,14 +178,18 @@ export default {
         this.isPublished = false;
         const form = event.target.closest("form");
         const formData = new FormData(form);
-        // test formData
-        for (let [name, value] of formData.entries()) {
-          console.log(`${name}: ${value}`);
-        }
-        const response = await adminAPI.addOption({
-          formData,
-          isPublished: this.isPublished,
-        });
+
+        this.toadd.categoryId = parseInt(formData.get("categoryId"));
+        this.toadd.name = formData.get("name");
+        this.toadd.levelId = parseInt(formData.get("levelId"));
+        //isLegal是test
+        this.toadd.isLegal = false;
+        this.toadd.description = this.description;
+        this.toadd.law = this.law;
+        this.toadd.isPublished = this.isPublished;
+        this.toadd = JSON.stringify(this.toadd);
+        console.log(this.toadd);
+        const response = await adminAPI.addOption(this.toadd);
         // 錯誤處理
         if (response.status !== 200) {
           throw new Error(response.data.message);
@@ -199,7 +212,6 @@ export default {
         this.isPublished = true;
         const form = event.target.closest("form");
         const formData = new FormData(form);
-
         const response = await adminAPI.addOption({
           formData,
           isPublished: this.isPublished,

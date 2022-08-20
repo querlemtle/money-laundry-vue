@@ -63,4 +63,4 @@ export default {
 };
 </script>
 
-<style scoped src="@/assets/css/dataList.css"></style>
+<style scoped src="@/assets/css/DataList.css"></style>
