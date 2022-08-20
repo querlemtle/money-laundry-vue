@@ -38,7 +38,7 @@ const routes = [
     name: "admin-option-new",
     component: () => import("../views/CreateOption.vue"),
   },
-  {   
+  {
     path: "/admin/option/:option_id",
     name: "admin-option-edit",
     component: () => import("../views/EditOption.vue"),
