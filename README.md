@@ -1,4 +1,4 @@
-# money-vue
+# money-laundry-vue
 
 ## Project setup
 ```

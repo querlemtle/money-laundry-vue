@@ -8,7 +8,6 @@ export default {
       password,
     });
   },
-
   getlatest() {
     return apiHelper.get("/admin/items/latest_10", {
       headers: { Authorization: `Bearer ${getToken()}` },
@@ -31,6 +30,16 @@ export default {
   },
   addOption(formData) {
     return apiHelper.post("/admin/item", formData, {
+      headers: { Authorization: `Bearer ${getToken()}` },
+    });
+  },
+  getCurrentUser() {
+    return apiHelper.get("/current_user", {
+      headers: { Authorization: `Bearer ${getToken()}` },
+    });
+  },
+  getItemDetail(itemId) {
+    return apiHelper.get(`/admin/items/${itemId}`, {
       headers: { Authorization: `Bearer ${getToken()}` },
     });
   },

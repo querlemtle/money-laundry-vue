@@ -77,7 +77,7 @@ export default {
         const response = await userAPI.getcategories();
 
         if (response.status !== 200) {
-          throw new Error(response.message);
+          throw new Error(response.data.message);
         }
         // console.log(response.data);
         this.categories = response.data.data;
@@ -113,7 +113,7 @@ export default {
         const response = await userAPI.getgameitems(id);
 
         if (response.status !== 200) {
-          throw new Error(response.message);
+          throw new Error(response.data.message);
         }
         console.log(response.data.data.Items);
         this.gameitems = response.data.data.Items;

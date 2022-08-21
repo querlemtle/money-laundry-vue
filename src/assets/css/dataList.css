@@ -1,0 +1,34 @@
+.table-head {
+  background-color: #59544f;
+  color: #fff;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #DFB084;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #D8CCC1;
+}
+
+span {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.c-black {
+  color: black;
+}
+
+.fa-pen-to-square,
+.fa-trash-can {
+  cursor: pointer;
+}
+
+.fa-pen-to-square {
+  color: #435363;
+}
+
+.fa-trash-can {
+  color: #802626;
+}
