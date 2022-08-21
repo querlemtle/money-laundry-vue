@@ -9,6 +9,16 @@
           v-model="toadd.categoryId"
         >
           <option value="" selected disabled>請選擇關卡類別</option>
+
+        <select name="categoryId" @blur="handleCategoryChange">
+          <option
+            v-if="!initialItemDetails.category"
+            value=""
+            selected
+            disabled
+          >
+            請選擇關卡類別
+          </option>
           <option
             v-for="category in initialCategories"
             :key="category.id"
@@ -21,6 +31,8 @@
       <div class="description">
         <label for="name">選項描述</label>
         <input type="text" name="name" v-model="toadd.name" />
+
+        <input type="text" name="name" v-model="initialItemDetails.name" />
       </div>
       <div class="level">
         <label for="levelId">屬於哪個關卡？</label>
@@ -56,8 +68,11 @@
             <input
               type="radio"
               name="legal"
+
               :value="option.checked"
               v-model="toadd.isLegal"
+              value="option.value"
+              v-model="initialItemDetails.isLegal"
             />
             <label for="legal">{{ option.name }}</label>
           </span>
@@ -65,11 +80,21 @@
       </div>
       <div class="error-context">
         <label for="description">錯誤事件敘述</label>
+
         <textarea name="description" v-model="toadd.description"></textarea>
       </div>
       <div class="law">
         <label for="law">法律條文</label>
         <textarea name="law" v-model="toadd.law"></textarea>
+        <textarea
+          name="description"
+          v-model="initialItemDetails.description"
+        ></textarea>
+      </div>
+      <div class="law">
+        <label for="law">法律條文</label>
+        <textarea name="law" v-model="initialItemDetails.law"></textarea>
+
       </div>
       <div class="w-100 button-container d-flex justify-content-end">
         <button class="return-btn px-4 py-2 my-2" :disabled="isProcessing">
@@ -110,7 +135,20 @@ export default {
   props: {
     initialCategories: {
       type: Array,
-      required: true,
+    },
+    initialItemDetails: {
+      type: Object,
+      default: () => {
+        return {
+          id: -1,
+          name: "",
+          description: "",
+          law: "",
+          isLegal: null,
+          category: null,
+          level: -1,
+        };
+      },
     },
   },
   data() {
@@ -147,6 +185,16 @@ export default {
           checked: false,
         },
       ],
+
+      devaddoption: {
+        categoryId: "",
+        name: "",
+        levelId: "",
+        description: "",
+        law: "",
+        isPublished: false,
+      },
+      form: {},
     };
   },
   methods: {

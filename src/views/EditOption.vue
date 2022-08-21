@@ -3,7 +3,10 @@
     <AdminHeader />
     <div class="wrap">
       <h4 class="title text-center py-3">修改選項</h4>
-      <OptionForm :initial-categories="categories" />
+      <OptionForm
+        :initial-categories="categories"
+        :initial-item-details="itemDetail"
+      />
     </div>
   </div>
 </template>
@@ -24,12 +27,18 @@ export default {
   data() {
     return {
       categories: [],
+      itemDetail: {},
     };
   },
+  created() {
+    const { option_id } = this.$route.params;
+    this.fetchCategories();
+    this.fetchItemDetail(option_id);
+  },
   beforeRouteUpdate(to, from, next) {
-    // 路由改變時重新抓取資料
-    const { id } = to.params;
-    this.fetchItemDetail(id);
+    const { option_id } = to.params;
+    this.fetchCategories();
+    this.fetchItemDetail(option_id);
     next();
   },
   methods: {
@@ -48,7 +57,9 @@ export default {
     async fetchItemDetail(itemId) {
       try {
         const response = await adminAPI.getItemDetail(itemId);
-        console.log(response.data);
+        console.log(response.data.data.item);
+        this.itemDetail = response.data.data.item;
+        console.log(this.itemDetail);
       } catch (error) {
         console.error(error.response.data.message);
         Toast.fire({
