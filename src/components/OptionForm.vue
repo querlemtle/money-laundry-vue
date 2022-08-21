@@ -3,6 +3,13 @@
     <form class="d-flex flex-column">
       <div class="categoryId">
         <label for="categoryId">關卡類別</label>
+        <select
+          name="categoryId"
+          @blur="handleCategoryChange"
+          v-model="toadd.categoryId"
+        >
+          <option value="" selected disabled>請選擇關卡類別</option>
+
         <select name="categoryId" @blur="handleCategoryChange">
           <option
             v-if="!initialItemDetails.category"
@@ -23,11 +30,13 @@
       </div>
       <div class="description">
         <label for="name">選項描述</label>
+        <input type="text" name="name" v-model="toadd.name" />
+
         <input type="text" name="name" v-model="initialItemDetails.name" />
       </div>
       <div class="level">
         <label for="levelId">屬於哪個關卡？</label>
-        <select name="levelId">
+        <select name="levelId" v-model="toadd.levelId">
           <option v-if="!isSuggestLevelsExist" value="" selected disabled>
             請先選擇關卡類別
           </option>
@@ -59,7 +68,10 @@
             <input
               type="radio"
               name="legal"
-              :value="option.value"
+
+              :value="option.checked"
+              v-model="toadd.isLegal"
+              value="option.value"
               v-model="initialItemDetails.isLegal"
             />
             <label for="legal">{{ option.name }}</label>
@@ -68,6 +80,12 @@
       </div>
       <div class="error-context">
         <label for="description">錯誤事件敘述</label>
+
+        <textarea name="description" v-model="toadd.description"></textarea>
+      </div>
+      <div class="law">
+        <label for="law">法律條文</label>
+        <textarea name="law" v-model="toadd.law"></textarea>
         <textarea
           name="description"
           v-model="initialItemDetails.description"
@@ -76,10 +94,14 @@
       <div class="law">
         <label for="law">法律條文</label>
         <textarea name="law" v-model="initialItemDetails.law"></textarea>
+
       </div>
       <div class="w-100 button-container d-flex justify-content-end">
         <button class="return-btn px-4 py-2 my-2" :disabled="isProcessing">
-          <router-link class="nav-btn" :to="{ path: '/admin/dashboard/newest' }"
+          <router-link
+            class="nav-btn"
+            :to="subHeaderRouterrouter"
+            @click.native.prevent="handleOpenModal(subHeaderRouterrouter)"
             >返回列表</router-link
           >
         </button>
@@ -94,7 +116,7 @@
         <button
           type="submit"
           class="send-btn px-4 py-2 my-2"
-          @click.prevent.stop="handleFormSubmit"
+          @click.prevent.stop="handleFormSubmit(toadd)"
           :disabled="isProcessing"
         >
           發佈
@@ -131,13 +153,14 @@ export default {
   },
   data() {
     return {
+      subHeaderRouterrouter: { path: "/admin/dashboard/newest" },
       toadd: {
-        categoryId: 94,
-        name: "a",
-        levelId: 634,
+        categoryId: "",
+        name: "",
+        levelId: "",
         isLegal: false,
-        description: "a",
-        law: "a",
+        description: "",
+        law: "",
         isPublished: false,
       },
       isSuggestLevelsExist: false,
@@ -154,7 +177,7 @@ export default {
         {
           value: 1,
           name: "是",
-          checked: false,
+          checked: true,
         },
         {
           value: 0,
@@ -162,6 +185,7 @@ export default {
           checked: false,
         },
       ],
+
       devaddoption: {
         categoryId: "",
         name: "",
@@ -174,6 +198,13 @@ export default {
     };
   },
   methods: {
+    handleOpenModal(route) {
+      if (this.IsV2User) {
+        this.$router.push(route);
+      } else {
+        this.openModal("changeUserType", "user.changeUserType");
+      }
+    },
     async handleCategoryChange(event) {
       // 取得類別 id 並轉成 number
       const categoryId = +event.target.value;
@@ -202,95 +233,61 @@ export default {
       try {
         // 暫時禁用按鈕
         this.isProcessing = true;
-        const form = event.target.closest("form");
-        const formData = new FormData(form);
-        formData.append("isPublished", false);
-        const payload = JSON.stringify(...formData);
-        console.log(payload);
-        // Test code：迴圈印出 formData
-        // for (let [name, value] of formData.entries()) {
-        //   console.log(`${name}: ${value}`);
+        toadd.isPublished = false;
+        //以下為Put方法
+        //   console.log(id, toadd);
+        //   const response = await adminAPI.putItem(id, toadd);
+        //   // 錯誤處理
+        //   if (response.status !== 200) {
+        //     throw new Error(response);
+        //   }
+        //   console.log(response);
+        //   this.isProcessing = false;
+        // } catch (error) {
+        //   this.isProcessing = false;
+        //   console.error(error.response);
+        //   Toast.fire({
+        //     icon: "error",
+        //     title: error.response,
+        //   });
         // }
-
-        // let payload = {
-        //   categoryId: formData.get("categoryId"),
-        //   levelId: formData.get("levelId"),
-        //   name: formData.get("name"),
-        //   isLegal: false,
-        //   description: formData.get("description"),
-        //   law: formData.get("law"),
-        //   isPublished: false,
-        // };
-        // this.toadd.categoryId = parseInt(formData.get("categoryId"));
-        // this.toadd.name = formData.get("name");
-        // this.toadd.levelId = parseInt(formData.get("levelId"));
-        //isLegal是test
-        // this.toadd.isLegal = false;
-        // this.toadd.description = this.description;
-        // this.toadd.law = this.law;
-        // this.toadd.isPublished = false;
-        // payload = JSON.stringify(payload);
-        // console.log(payload);
-        // const response = await adminAPI.addOption(payload);
-        // 錯誤處理
-        // if (response.status !== 201 || response.status !== 200) {
-        //   throw new Error(response.data.message);
-        // }
-        // console.log(response);
-
-        // await funcation (event ){
-        //   this.isProcessing = true;
-        //   this.isPublished = false;
-        //   const form = event.target.closest("form");
-        //   const formData = new FormData(form);
-
-        //   //用一個新的物件(toadd)傳送資料
-        //   toadd.categoryId = parseInt(formData.get("categoryId"));
-        //   toadd.name = formData.get("name");
-        //   toadd.levelId = parseInt(formData.get("levelId"));
-        //   //isLegal是test
-        //   toadd.isLegal = false;
-        //   toadd.description = this.description;
-        //   toadd.law = this.law;
-        //   toadd.isPublished = this.isPublished;
-        //   // this.toadd = JSON.stringify(this.toadd);
-
-        //   console.log(toadd);
-        // }
-
         const response = await adminAPI.addOption(toadd);
         // 錯誤處理
         if (response.status !== 201) {
-          throw new Error(response);
-        }
-        console.log(response);
-        this.isProcessing = false;
-      } catch (error) {
-        this.isProcessing = false;
-        console.error(error.response);
-        Toast.fire({
-          icon: "error",
-          title: error.response,
-        });
-      }
-    },
-    async handleFormSubmit(event) {
-      try {
-        // 暫時禁用按鈕
-        this.isProcessing = true;
-        this.isPublished = true;
-        const form = event.target.closest("form");
-        const formData = new FormData(form);
-        const response = await adminAPI.addOption({
-          formData,
-          isPublished: this.isPublished,
-        });
-        // 錯誤處理
-        if (response.status !== 200) {
           throw new Error(response.data.message);
         }
         console.log(response);
         this.isProcessing = false;
+        Toast.fire({
+          icon: "success",
+          title: response.data.status,
+        });
+        // this.handleOpenModal(this.subHeaderRouterrouter);
+      } catch (error) {
+        this.isProcessing = false;
+        console.error(error.response.data.message);
+        Toast.fire({
+          icon: "error",
+          title: error.response.data.message,
+        });
+      }
+    },
+    async handleFormSubmit(toadd) {
+      try {
+        // 暫時禁用按鈕
+        this.isProcessing = true;
+        toadd.isPublished = true;
+        const response = await adminAPI.addOption(toadd);
+        // 錯誤處理
+        if (response.status !== 201) {
+          throw new Error(response.data.message);
+        }
+        console.log(response);
+        this.isProcessing = false;
+        Toast.fire({
+          icon: "success",
+          title: response.data.status,
+        });
       } catch (error) {
         this.isProcessing = false;
         console.error(error.response.data.message);
