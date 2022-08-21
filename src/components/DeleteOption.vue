@@ -43,7 +43,7 @@ export default {
         const response = await adminAPI.deleteitem(id);
 
         if (response.status !== 200) {
-          throw new Error(response.message);
+          throw new Error(response.data.message);
         }
         // console.log(response);
         Toast.fire({

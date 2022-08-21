@@ -42,7 +42,7 @@ export default {
         const response = await adminAPI.getlatest();
 
         if (response.status !== 200) {
-          throw new Error(response.message);
+          throw new Error(response.data.message);
         }
         // console.log(response.data.data.items);
         this.datalist = response.data.data.items;
@@ -56,7 +56,7 @@ export default {
         const response = await adminAPI.getcategoryitem(category_id);
 
         if (response.status !== 200) {
-          throw new Error(response.message);
+          throw new Error(response.data.message);
         }
         // console.log(response.data.data.items);
         this.datalist = response.data.data.items;
