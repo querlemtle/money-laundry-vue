@@ -71,7 +71,7 @@
         <button
           type="submit"
           class="save-btn px-4 py-2 my-2"
-          @click.prevent.stop="handleFormSave"
+          @click.prevent.stop="handleFormSave(toadd)"
           :disabled="isProcessing"
         >
           儲存草稿
@@ -103,6 +103,15 @@ export default {
   },
   data() {
     return {
+      toadd: {
+        categoryId: 94,
+        name: "s",
+        levelId: 634,
+        isLegal: false,
+        description: "s",
+        law: "s",
+        isPublished: false,
+      },
       isSuggestLevelsExist: false,
       isLevelLoading: false,
       isProcessing: false,
@@ -134,7 +143,14 @@ export default {
         law: "",
         isPublished: false,
       },
-    };
+       dev-addoption: {
+            categoryId: "",
+            name: "",
+            levelId: "",
+            description: "",
+            law: "",
+            isPublished: false,
+          };
   },
   methods: {
     async handleCategoryChange(event) {
@@ -161,9 +177,11 @@ export default {
         });
       }
     },
-    async handleFormSave(event) {
+    async handleFormSave(toadd) {
       try {
         // 暫時禁用按鈕
+
+=======
         this.isProcessing = true;
         const form = event.target.closest("form");
         const formData = new FormData(form);
@@ -200,13 +218,40 @@ export default {
         //   throw new Error(response.data.message);
         // }
         // console.log(response);
+
+        // await funcation (event ){
+        //   this.isProcessing = true;
+        //   this.isPublished = false;
+        //   const form = event.target.closest("form");
+        //   const formData = new FormData(form);
+
+        //   //用一個新的物件(toadd)傳送資料
+        //   toadd.categoryId = parseInt(formData.get("categoryId"));
+        //   toadd.name = formData.get("name");
+        //   toadd.levelId = parseInt(formData.get("levelId"));
+        //   //isLegal是test
+        //   toadd.isLegal = false;
+        //   toadd.description = this.description;
+        //   toadd.law = this.law;
+        //   toadd.isPublished = this.isPublished;
+        //   // this.toadd = JSON.stringify(this.toadd);
+
+        //   console.log(toadd);
+        // }
+
+        const response = await adminAPI.addOption(toadd);
+        // 錯誤處理
+        if (response.status !== 201) {
+          throw new Error(response);
+        }
+        console.log(response);
         this.isProcessing = false;
       } catch (error) {
         this.isProcessing = false;
-        console.error(error.response.data.message);
+        console.error(error.response);
         Toast.fire({
           icon: "error",
-          title: error.response.data.message,
+          title: error.response,
         });
       }
     },
