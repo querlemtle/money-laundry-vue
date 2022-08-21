@@ -9,17 +9,6 @@
           v-model="toadd.categoryId"
         >
           <option value="" selected disabled>請選擇關卡類別</option>
-
-          <!-- <select name="categoryId" @blur="handleCategoryChange">
-          <option
-            v-if="!initialItemDetails.category"
-            應該可以用v-if
-            value=""
-            selected
-            disabled
-          >
-            請選擇關卡類別
-          </option> -->
           <option
             v-for="category in initialCategories"
             :key="category.id"
@@ -129,9 +118,10 @@ export default {
           name: "",
           description: "",
           law: "",
-          isLegal: null,
-          category: null,
-          level: -1,
+          isLegal: false,
+          isPublished: false,
+          categoryId: -1,
+          levelId: -1,
         };
       },
     },
@@ -176,13 +166,6 @@ export default {
     backdashboard() {
       this.$router.push("/admin/dashboard/newest");
     },
-    handleOpenModal(route) {
-      if (this.IsV2User) {
-        this.$router.push(route);
-      } else {
-        this.openModal("changeUserType", "user.changeUserType");
-      }
-    },
     async handleCategoryChange(event) {
       // 取得類別 id 並轉成 number
       const categoryId = +event.target.value;
@@ -212,36 +195,18 @@ export default {
         // 暫時禁用按鈕
         this.isProcessing = true;
         toadd.isPublished = false;
-        //以下為Put方法
-        //   console.log(id, toadd);
-        //   const response = await adminAPI.putItem(id, toadd);
-        //   // 錯誤處理
-        //   if (response.status !== 200) {
-        //     throw new Error(response);
-        //   }
-        //   console.log(response);
-        //   this.isProcessing = false;
-        // } catch (error) {
-        //   this.isProcessing = false;
-        //   console.error(error.response);
-        //   Toast.fire({
-        //     icon: "error",
-        //     title: error.response,
-        //   });
-        // }
         const response = await adminAPI.addOption(toadd);
         // 錯誤處理
         if (response.status !== 201) {
           throw new Error(response.data.message);
         }
-        console.log(response);
+        // console.log(response);
         this.isProcessing = false;
         Toast.fire({
           icon: "success",
           title: response.data.status,
         });
         this.backdashboard();
-        // this.handleOpenModal(this.subHeaderRouterrouter);
       } catch (error) {
         this.isProcessing = false;
         console.error(error.response.data.message);
@@ -261,7 +226,7 @@ export default {
         if (response.status !== 201) {
           throw new Error(response.data.message);
         }
-        console.log(response);
+        // console.log(response);
         this.isProcessing = false;
         Toast.fire({
           icon: "success",
@@ -277,18 +242,6 @@ export default {
         });
       }
     },
-  },
-  created() {
-    this.toadd = {
-      ...this.initialItemDetails,
-      categoryId: this.initialItemDetails.category.id,
-      levelId: this.initialItemDetails.level.id,
-      isLegal: this.initialItemDetails.isLegal,
-      law: this.initialItemDetails.law,
-      description: this.initialItemDetails.description,
-      name: this.initialItemDetails.name,
-      isPublished: this.initialItemDetails.isPublished,
-    };
   },
 };
 </script>
