@@ -43,4 +43,9 @@ export default {
       headers: { Authorization: `Bearer ${getToken()}` },
     });
   },
+  putItem(itemId, formData) {
+    return apiHelper.put(`/admin/items/${itemId}`, formData, {
+      headers: { Authorization: `Bearer ${getToken()}` },
+    });
+  },
 };
