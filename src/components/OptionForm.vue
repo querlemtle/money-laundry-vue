@@ -3,11 +3,7 @@
     <form class="d-flex flex-column">
       <div class="categoryId">
         <label for="categoryId">關卡類別</label>
-        <select
-          name="categoryId"
-          @blur="handleCategoryChange"
-          v-model="categoryId"
-        >
+        <select name="categoryId" @blur="handleCategoryChange">
           <option value="" selected disabled>請選擇關卡類別</option>
           <option
             v-for="category in initialCategories"
@@ -20,7 +16,7 @@
       </div>
       <div class="description">
         <label for="name">選項描述</label>
-        <input type="text" name="name" v-model="name" />
+        <input type="text" name="name" />
       </div>
       <div class="level">
         <label for="levelId">屬於哪個關卡？</label>
@@ -53,23 +49,18 @@
             v-for="option in legalOptions"
             :key="option.value"
           >
-            <input
-              type="radio"
-              name="legal"
-              :value="option.value"
-              v-model="option.checked"
-            />
+            <input type="radio" name="legal" :value="option.value" />
             <label for="legal">{{ option.name }}</label>
           </span>
         </div>
       </div>
       <div class="error-context">
         <label for="description">錯誤事件敘述</label>
-        <textarea name="description" v-model="description"></textarea>
+        <textarea name="description"></textarea>
       </div>
       <div class="law">
         <label for="law">法律條文</label>
-        <textarea name="law" v-model="law"></textarea>
+        <textarea name="law"></textarea>
       </div>
       <div class="w-100 button-container d-flex justify-content-end">
         <button class="return-btn px-4 py-2 my-2" :disabled="isProcessing">
@@ -143,26 +134,41 @@ export default {
           checked: false,
         },
       ],
-      categoryId: "",
-      name: "",
-      levelId: "",
-      description: "",
-      law: "",
-      isPublished: false,
-    };
+      toadd: {
+        categoryId: 0,
+        levelId: 0,
+        name: "",
+        isLegal: true,
+        description: "",
+        law: "",
+        isPublished: false,
+      },
+       dev-addoption: {
+            categoryId: "",
+            name: "",
+            levelId: "",
+            description: "",
+            law: "",
+            isPublished: false,
+          };
   },
   methods: {
     async handleCategoryChange(event) {
       // 取得類別 id 並轉成 number
       const categoryId = +event.target.value;
       try {
-        // add spinner
-        this.isLevelLoading = true;
-        const response = await adminAPI.getSuggestLevels({ categoryId });
-        this.suggestLevels = [...response.data.data.suggestLevels];
-        // 隱藏下拉選單的預設選項
-        this.isSuggestLevelsExist = true;
-        this.isLevelLoading = false;
+        if (categoryId) {
+          // add spinner
+          this.isLevelLoading = true;
+
+          const response = await adminAPI.getSuggestLevels({ categoryId });
+          this.suggestLevels = [...response.data.data.suggestLevels];
+          // 隱藏關卡下拉選單的預設選項
+          this.isSuggestLevelsExist = true;
+          this.isLevelLoading = false;
+        } else {
+          return;
+        }
       } catch (error) {
         console.error(error.response.data.message);
         Toast.fire({
@@ -174,6 +180,45 @@ export default {
     async handleFormSave(toadd) {
       try {
         // 暫時禁用按鈕
+
+=======
+        this.isProcessing = true;
+        const form = event.target.closest("form");
+        const formData = new FormData(form);
+        formData.append("isPublished", false);
+        const payload = JSON.stringify(...formData);
+        console.log(payload);
+        // Test code：迴圈印出 formData
+        // for (let [name, value] of formData.entries()) {
+        //   console.log(`${name}: ${value}`);
+        // }
+
+        // let payload = {
+        //   categoryId: formData.get("categoryId"),
+        //   levelId: formData.get("levelId"),
+        //   name: formData.get("name"),
+        //   isLegal: false,
+        //   description: formData.get("description"),
+        //   law: formData.get("law"),
+        //   isPublished: false,
+        // };
+        // this.toadd.categoryId = parseInt(formData.get("categoryId"));
+        // this.toadd.name = formData.get("name");
+        // this.toadd.levelId = parseInt(formData.get("levelId"));
+        //isLegal是test
+        // this.toadd.isLegal = false;
+        // this.toadd.description = this.description;
+        // this.toadd.law = this.law;
+        // this.toadd.isPublished = false;
+        // payload = JSON.stringify(payload);
+        // console.log(payload);
+        // const response = await adminAPI.addOption(payload);
+        // 錯誤處理
+        // if (response.status !== 201 || response.status !== 200) {
+        //   throw new Error(response.data.message);
+        // }
+        // console.log(response);
+
         // await funcation (event ){
         //   this.isProcessing = true;
         //   this.isPublished = false;

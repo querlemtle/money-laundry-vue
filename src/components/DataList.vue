@@ -54,7 +54,7 @@ export default {
   mixins: [fromNowFilter],
   methods: {
     edititem(id) {
-      console.log("edit", id);
+      this.$store.commit("setOption", id);
     },
     deleteitem(name, id) {
       this.$emit("delete", name, id);
@@ -63,4 +63,4 @@ export default {
 };
 </script>
 
-<style scoped src="@/assets/css/DataList.css"></style>
+<style scoped src="@/assets/css/dataList.css"></style>
