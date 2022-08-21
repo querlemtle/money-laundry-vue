@@ -105,11 +105,11 @@ export default {
     return {
       toadd: {
         categoryId: 94,
-        name: "s",
+        name: "a",
         levelId: 634,
         isLegal: false,
-        description: "s",
-        law: "s",
+        description: "a",
+        law: "a",
         isPublished: false,
       },
       isSuggestLevelsExist: false,
@@ -134,23 +134,15 @@ export default {
           checked: false,
         },
       ],
-      toadd: {
-        categoryId: 0,
-        levelId: 0,
+      devaddoption: {
+        categoryId: "",
         name: "",
-        isLegal: true,
+        levelId: "",
         description: "",
         law: "",
         isPublished: false,
       },
-       dev-addoption: {
-            categoryId: "",
-            name: "",
-            levelId: "",
-            description: "",
-            law: "",
-            isPublished: false,
-          };
+    };
   },
   methods: {
     async handleCategoryChange(event) {
@@ -181,7 +173,6 @@ export default {
       try {
         // 暫時禁用按鈕
 
-=======
         this.isProcessing = true;
         const form = event.target.closest("form");
         const formData = new FormData(form);
