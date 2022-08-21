@@ -44,7 +44,14 @@ export default new Vuex.Store({
         console.error(error.response.data.message);
       }
     },
-    fetchOption() {},
+    async fetchOption(id) {
+      try {
+        const response = await adminAPI.getItemDetail(id);
+        console.log(response);
+      } catch (error) {
+        console.error(error.response.data.message);
+      }
+    },
   },
   modules: {},
 });

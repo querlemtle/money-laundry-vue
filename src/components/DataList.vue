@@ -55,6 +55,7 @@ export default {
   methods: {
     edititem(id) {
       this.$store.commit("setOption", id);
+      this.$router.push(`/admin/option/${id}`);
     },
     deleteitem(name, id) {
       this.$emit("delete", name, id);
