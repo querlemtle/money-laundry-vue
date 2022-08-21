@@ -10,15 +10,16 @@
         >
           <option value="" selected disabled>請選擇關卡類別</option>
 
-        <select name="categoryId" @blur="handleCategoryChange">
+          <!-- <select name="categoryId" @blur="handleCategoryChange">
           <option
             v-if="!initialItemDetails.category"
+            應該可以用v-if
             value=""
             selected
             disabled
           >
             請選擇關卡類別
-          </option>
+          </option> -->
           <option
             v-for="category in initialCategories"
             :key="category.id"
@@ -31,8 +32,6 @@
       <div class="description">
         <label for="name">選項描述</label>
         <input type="text" name="name" v-model="toadd.name" />
-
-        <input type="text" name="name" v-model="initialItemDetails.name" />
       </div>
       <div class="level">
         <label for="levelId">屬於哪個關卡？</label>
@@ -68,11 +67,8 @@
             <input
               type="radio"
               name="legal"
-
               :value="option.checked"
               v-model="toadd.isLegal"
-              value="option.value"
-              v-model="initialItemDetails.isLegal"
             />
             <label for="legal">{{ option.name }}</label>
           </span>
@@ -80,30 +76,19 @@
       </div>
       <div class="error-context">
         <label for="description">錯誤事件敘述</label>
-
         <textarea name="description" v-model="toadd.description"></textarea>
       </div>
       <div class="law">
         <label for="law">法律條文</label>
         <textarea name="law" v-model="toadd.law"></textarea>
-        <textarea
-          name="description"
-          v-model="initialItemDetails.description"
-        ></textarea>
-      </div>
-      <div class="law">
-        <label for="law">法律條文</label>
-        <textarea name="law" v-model="initialItemDetails.law"></textarea>
-
       </div>
       <div class="w-100 button-container d-flex justify-content-end">
-        <button class="return-btn px-4 py-2 my-2" :disabled="isProcessing">
-          <router-link
-            class="nav-btn"
-            :to="subHeaderRouterrouter"
-            @click.native.prevent="handleOpenModal(subHeaderRouterrouter)"
-            >返回列表</router-link
-          >
+        <button
+          class="return-btn px-4 py-2 my-2"
+          :disabled="isProcessing"
+          @click.prevent.stop="$router.push(subHeaderRouterrouter)"
+        >
+          返回列表
         </button>
         <button
           type="submit"
@@ -185,19 +170,12 @@ export default {
           checked: false,
         },
       ],
-
-      devaddoption: {
-        categoryId: "",
-        name: "",
-        levelId: "",
-        description: "",
-        law: "",
-        isPublished: false,
-      },
-      form: {},
     };
   },
   methods: {
+    backdashboard() {
+      this.$router.push("/admin/dashboard/newest");
+    },
     handleOpenModal(route) {
       if (this.IsV2User) {
         this.$router.push(route);
@@ -262,6 +240,7 @@ export default {
           icon: "success",
           title: response.data.status,
         });
+        this.backdashboard();
         // this.handleOpenModal(this.subHeaderRouterrouter);
       } catch (error) {
         this.isProcessing = false;
@@ -288,6 +267,7 @@ export default {
           icon: "success",
           title: response.data.status,
         });
+        this.backdashboard();
       } catch (error) {
         this.isProcessing = false;
         console.error(error.response.data.message);
@@ -297,6 +277,18 @@ export default {
         });
       }
     },
+  },
+  created() {
+    this.toadd = {
+      ...this.initialItemDetails,
+      categoryId: this.initialItemDetails.category.id,
+      levelId: this.initialItemDetails.level.id,
+      isLegal: this.initialItemDetails.isLegal,
+      law: this.initialItemDetails.law,
+      description: this.initialItemDetails.description,
+      name: this.initialItemDetails.name,
+      isPublished: this.initialItemDetails.isPublished,
+    };
   },
 };
 </script>

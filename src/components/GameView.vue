@@ -66,6 +66,7 @@ export default {
       isError: false,
       isWinner: false,
       isDisabled: false,
+      gamelevelTotal: 5,
     };
   },
   components: {
@@ -98,6 +99,8 @@ export default {
         const data = response.data.data.Levels;
         this.levellist = JSON.parse(JSON.stringify(data));
         this.gamequestionid = this.levellist[this.gamelevel - 1].id;
+        this.gamelevelTotal = this.levellist.length;
+        console.log(this.gamelevelTotal);
         // console.log(this.gamequestionid);
         this.gamequestion = "Q" + this.gamelevel + ". 以下情境何者沒有犯法？";
         this.isAnimate = false;
@@ -133,7 +136,7 @@ export default {
     getResult(isLegal, law, description) {
       this.isDisabled = true;
       if (isLegal) {
-        if (this.gamelevel === 5) {
+        if (this.gamelevel === this.gamelevelTotal) {
           this.isWinner = true;
         } else {
           this.gamelevel++;
