@@ -105,11 +105,11 @@ export default {
     return {
       toadd: {
         categoryId: 94,
-        name: "s",
+        name: "a",
         levelId: 634,
         isLegal: false,
-        description: "s",
-        law: "s",
+        description: "a",
+        law: "a",
         isPublished: false,
       },
       isSuggestLevelsExist: false,
