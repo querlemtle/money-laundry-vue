@@ -1,0 +1,62 @@
+/* chat bot icons */
+.toggle-icon {
+  position: fixed;
+  right: 2rem;
+  bottom: 2.5rem;
+  padding: 1rem;
+  z-index: 666;
+}
+
+.bot-icon,
+.cross-icon {
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  position: fixed;
+  right: 0.5rem;
+  bottom: 1.5rem;
+  cursor: pointer;
+}
+
+.bot-icon {
+  background-image: url("./../pictures/chatbot-icon.png");
+  background-size: cover;
+}
+
+.cross-icon {
+  background-image: url("./../pictures/cross-icon.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #8e8e8e;
+  /* change svg color */
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(216deg) brightness(103%) contrast(103%);
+}
+
+/* transition: toggle chat room */
+.toggle-chat-enter-active,
+.toggle-chat-leave-active {
+  opacity: 1;
+  transform: translate(0, 0);
+  transition: opacity .15s linear, transform .2s ease-out;
+}
+
+.toggle-chat-enter,
+.toggle-chat-leave-to {
+  transform: translate(0, 20px);
+  opacity: 0;
+}
+
+/* transition: toggle chat bot icons */
+.icon-fade-enter-active,
+.icon-fade-leave-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.icon-fade-enter,
+.icon-fade-leave-to {
+  transform: scale(0);
+  opacity: 0;
+}

@@ -1,18 +1,20 @@
-import moment from "moment";
-import "moment/locale/zh-tw";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime);
+require("dayjs/locale/zh-tw");
 
 export const fromNowFilter = {
   filters: {
     fromNow(datetime) {
-      return datetime ? moment(datetime).fromNow() : "-";
+      return datetime ? dayjs(datetime).locale("zh-tw").fromNow() : "-";
     },
   },
 };
 
-export const customLongDateFormatter = {
+export const customDateFormatter = {
   filters: {
-    customLongDateFormat(datetime) {
-      return datetime ? moment(datetime).format("a h:mm・ll") : "-";
+    customDateFormat(datetime) {
+      return datetime ? dayjs(datetime).locale("zh-tw").format("a h:mm") : "-";
     },
   },
 };

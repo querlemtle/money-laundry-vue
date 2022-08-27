@@ -1,0 +1,78 @@
+/* chat container and header*/
+.chat-container {
+  position: fixed;
+  bottom: 3.5rem;
+  right: 5rem;
+  background-color: #ffffff;
+  border: 0.625rem solid #d9d6cd;
+  border-radius: 30px;
+  box-shadow: -3px 3px 5px 3px rgba(0, 0, 0, 0.2);
+}
+
+.chat-header {
+  flex-basis: 10%;
+}
+
+/* chat body: links, avatar and messages */
+.chat-body {
+  flex-basis: 80%;
+  width: 25vw;
+  height: 50vh;
+  overflow-y: auto;
+}
+
+.bot-message {
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.bot-avatar {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-image: url("./../pictures/chatbot-icon.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bot-message-content {
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+}
+
+.user-message-content {
+  background-color: #8e8e8e;
+  color: #ffffff;
+  border-radius: 20px;
+}
+
+/* chat footer: text input and send button */
+.chat-footer {
+  flex-basis: 10%;
+  border-top: 2px solid #d7cbbf;
+}
+
+.links-wrapper {
+  line-height: 2;
+}
+
+.chat-link {
+  background-color: #d7cbbf;
+  padding: 0.5rem 3rem;
+  color: #ffffff;
+  font-size: 1.25rem;
+}
+
+.chat-input {
+  border-radius: 0.5rem;
+  flex: 1 1 50%;
+}
+
+.send-icon {
+  cursor: pointer;
+}
+
+.send-icon:hover {
+  color: #CB5252;
+}
