@@ -1,41 +1,40 @@
+@font-face {
+  font-family: '辰宇落雁體 Thin';
+  src:url("/fonts/ChenYuLuoYanTi-Thin.ttf")format('truetype'), url('/fonts/ChenYuLuoYanTi-Thin.woff') format('woff');
+}
+
 * {
-  font-family: 'Noto Sans TC', sans-serif;
+  font-family: 'Edu VIC WA NT Beginner', '辰宇落雁體 Thin';
+  list-style: none;
+}
+
+.body {
+  background-color: #D8CCC1;
 }
 
 .container {
   max-width: 2000px;
 }
 
-.site-header {
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  backdrop-filter: saturate(180%) blur(20px);
-}
-.site-header a {
-  color: #8e8e8e;
-  transition: color .15s ease-in-out;
-}
-.site-header a:hover {
-  color: black;
-  text-decoration: none;
-}
-
 .banner {
-  height: 60vh;
-  background-image: url('https://images.unsplash.com/photo-1475650522725-015d35677789?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+  height: 50vh;
+  background-image: url("../pictures/FQAbanner.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .banner_text {
-  color: white;
+  color: black;
   font-size: 100px;
   font-weight: bold;
+  padding: 40px;
+  background-color: rgba(211,220,228, 0.8);
 }
 
 @media (max-width: 768px) {
   .banner_text {
-    color: white;
+    color: black;
     font-size: 70px;
     font-weight: bold;
   }
@@ -43,7 +42,7 @@
 
 @media (max-width: 576px) {
   .banner_text {
-    color: white;
+    color: black;
     font-size: 40px;
     font-weight: bold;
   }
@@ -55,4 +54,22 @@
   flex-wrap: nowrap;
   align-items: center;
   margin-bottom: 2.5rem;
+}
+
+.content {
+  padding: 45px 40px;
+  font-size: 24px;
+  background-image: url("../pictures/paper.png");
+  background-size: cover;
+  background-position: bottom;
+}
+
+.fa-file-lines {
+  cursor: pointer;
+  color: gray;
+}
+
+.keyword {
+  color: red;
+  font-weight: bold;
 }
