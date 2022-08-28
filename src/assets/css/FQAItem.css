@@ -1,0 +1,43 @@
+@font-face {
+  font-family: '辰宇落雁體 Thin';
+  src:url("/fonts/ChenYuLuoYanTi-Thin.ttf")format('truetype'), url('/fonts/ChenYuLuoYanTi-Thin.woff') format('woff');
+}
+
+* {
+  font-family: 'Edu VIC WA NT Beginner', '辰宇落雁體 Thin';
+  list-style: none;
+}
+
+.body {
+  background-color: #D8CCC1;
+}
+
+.container {
+  max-width: 2000px;
+  padding-bottom: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: gray;
+}
+
+.itemtitle, .itemlaw {
+  padding: 10px;
+  padding-left: 50px;
+  padding-right: 30px;
+  padding-bottom: 0px;
+  font-size: 24px;
+  font-weight: bold;
+  border: 1px dashed black;
+  background-color: rgb(253,251,249);
+  border-width: 2px 3px 2px 5px;
+  /* 做出傾斜的視覺感 */
+  border: dashed black 2px;
+}
+
+.itemlaw {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: normal;
+}

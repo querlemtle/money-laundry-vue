@@ -1,0 +1,177 @@
+@font-face {
+  font-family: '辰宇落雁體 Thin';
+  src:url("/fonts/ChenYuLuoYanTi-Thin.ttf")format('truetype'), url('/fonts/ChenYuLuoYanTi-Thin.woff') format('woff');
+}
+
+* {
+  font-family: 'Edu VIC WA NT Beginner', '辰宇落雁體 Thin';
+  list-style: none;
+}
+
+
+
+.body {
+  background-color: #D8CCC1;
+  height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.header {
+  height: 10vh;
+  padding: 0 20px;
+  padding-bottom: 20px;
+  font-size: 24px;
+  background-image: url("../pictures/paper.png");
+  background-size: cover;
+  background-position: bottom;
+
+}
+
+ul {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  color: green;
+}
+
+.container {
+  max-width: 1400px;
+  width: 100%;
+  display: flex;
+  padding: 5vh 4vw;
+}
+
+
+.content {
+  width: 55%;
+  margin-right: 5%;
+  
+}
+
+.banner {
+  background-image: url("../pictures/paper.png");
+  background-size: cover;
+  padding: 4vh 3vw;
+  margin-bottom: 5vh;
+}
+
+h2 {
+  padding-top: 5vh;
+  font-size: 50px;
+  padding-bottom: 5vh;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 40px;
+  text-align: end;
+  padding-bottom: 5vh;
+  font-weight: bold;
+}
+
+
+.library {
+  display: flex;
+}
+
+.library_box {
+  margin-right: 2vw;
+}
+
+.library_pic {
+  background-image: url("./../pictures/library.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 20vw;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.library_box_text {
+  text-align: center;
+  font-size: 40px;
+  padding: 20px 40px;
+  font-weight: bold;
+  color:black;
+  background-color: rgba(211,220,228, 0.8);
+}
+
+.library_text {
+  padding: 20px 40px;
+  padding-top: 30px;
+  height: 350px;
+  font-size: 20px;
+  color:black;
+  background-image: url("../pictures/paper.png");
+  background-size: cover;
+}
+
+.library_text h4 {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.library_text p {
+  height: 20vh;
+  overflow: hidden;
+}
+
+
+.aside {
+  width: 40%;
+  background-image: url("../pictures/paper.png");
+  background-size: cover;
+  padding: 50px 3vw;
+}
+
+.aside h4 {
+  padding-top: 20px;
+  font-size: 36px;
+  padding-bottom: 20px;
+  font-weight: bold;
+}
+
+.aside h5 {
+  text-align: center;
+  font-size: 30px;
+  margin-top: 20px;
+  font-weight: bold;
+  color: green;
+}
+
+.gameview {
+  height: 400px;
+  background-image: url("https://i.imgur.com/nIQDyn5.png");
+  background-size: cover;
+  background-position: center;
+}
+
+
+@media (max-width: 992px) {
+  .body {
+    height: auto;
+  }
+  .container {
+    flex-direction: column;
+  }
+  .content {
+    width: 100%;
+  }
+  .library_pic {
+    width: 40vw;
+  }
+  .aside {
+    width: 100%;
+
+  }
+}

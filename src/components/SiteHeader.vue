@@ -3,10 +3,12 @@
     <nav
       class="container col-10 d-flex flex-column flex-md-row justify-content-between"
     >
-      <a class="py-2" href="#" aria-label="Product">
+      <router-link class="py-2" to="/home" aria-label="Product">
         <img src="../assets/pictures/logo.svg" alt="logo" />
-      </a>
-      <a class="py-2 d-none d-md-inline-block" href="#">資訊查詢</a>
+      </router-link>
+      <router-link class="py-2 d-none d-md-inline-block" to="/fqa"
+        >資訊查詢</router-link
+      >
       <router-link class="py-2 d-none d-md-inline-block" to="/game"
         >遊戲專區</router-link
       >

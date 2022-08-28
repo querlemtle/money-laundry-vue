@@ -49,6 +49,21 @@ const routes = [
     component: () => import("../views/Game.vue"),
   },
   {
+    path: "/home",
+    name: "Home",
+    component: () => import("../views/Home.vue"),
+  },
+  {
+    path: "/fqa",
+    name: "FQA",
+    component: () => import("../views/FQA.vue"),
+  },
+  {
+    path: "/fqa_item",
+    name: "FQAItem",
+    component: () => import("../views/FQAItem.vue"),
+  },
+  {
     path: "*",
     name: "not-found",
     component: NotFound,
