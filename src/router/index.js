@@ -8,7 +8,7 @@ const routes = [
   {
     path: "/",
     name: "root",
-    redirect: "/admin/login",
+    redirect: "/game",
   },
   {
     path: "/admin/login",

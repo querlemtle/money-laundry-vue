@@ -11,6 +11,7 @@
       @backing="gameback"
       class="animate__animated animate__zoomIn"
     />
+    <Chatbot />
   </div>
 </template>
 
@@ -18,6 +19,7 @@
 import SiteHeader from "../components/SiteHeader.vue";
 import GameStart from "../components/GameStart.vue";
 import GameView from "../components/GameView.vue";
+import Chatbot from "../components/ChatbotUI.vue";
 
 export default {
   data() {
@@ -30,6 +32,7 @@ export default {
     SiteHeader,
     GameStart,
     GameView,
+    Chatbot,
   },
   methods: {
     start() {
