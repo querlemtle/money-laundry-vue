@@ -32,8 +32,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner:wght@400;500;600;700&family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap");
 @font-face {
   font-family: "辰宇落雁體 Thin";
-  src: url("/fonts/ChenYuLuoYanTi-Thin.ttf") format("truetype"),
-    url("/fonts/ChenYuLuoYanTi-Thin.woff") format("woff");
+  src: url("./../assets/fonts/ChenYuluoyan-Thin.ttf") format("truetype");
+  src: url("./../assets/fonts/ChenYuluoyan-Thin.woff") format("woff");
 }
 
 * {

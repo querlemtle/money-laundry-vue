@@ -1,6 +1,7 @@
 @font-face {
   font-family: '辰宇落雁體 Thin';
-  src:url("/fonts/ChenYuLuoYanTi-Thin.ttf")format('truetype'), url('/fonts/ChenYuLuoYanTi-Thin.woff') format('woff');
+  src:url("../fonts/ChenYuluoyan-Thin.ttf")format('truetype');
+  src:url('../fonts/ChenYuluoyan-Thin.woff') format('woff');
 }
 
 * {
