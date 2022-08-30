@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <SiteHeader />
+  <div class="body">
+    <UserHeader />
     <GameStart
       v-if="isResetGame"
       @starting="start"
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import SiteHeader from "../components/SiteHeader.vue";
+import UserHeader from "../components/UserHeader.vue";
 import GameStart from "../components/GameStart.vue";
 import GameView from "../components/GameView.vue";
 import Chatbot from "../components/ChatbotUI.vue";
@@ -29,7 +29,7 @@ export default {
     };
   },
   components: {
-    SiteHeader,
+    UserHeader,
     GameStart,
     GameView,
     Chatbot,
@@ -46,3 +46,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.body {
+  background-color: #d8ccc1;
+}
+</style>

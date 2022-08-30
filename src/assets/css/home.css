@@ -99,8 +99,8 @@ h3 {
 
 .library_box_text {
   text-align: center;
-  font-size: 40px;
-  padding: 20px 40px;
+  font-size: 35px;
+  padding: 20px 30px;
   font-weight: bold;
   color:black;
   background-color: rgba(211,220,228, 0.8);
@@ -173,5 +173,24 @@ h3 {
   .aside {
     width: 100%;
 
+  }
+}
+
+@media (max-width: 768px){
+  .library_box_text {
+    font-size: 30px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 576px){
+  .library_box_text {
+    font-size: 20px;
+  }
+  h2 {
+    font-size: 40px;
+  }
+  h3 {
+    font-size: 30px;
   }
 }

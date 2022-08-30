@@ -30,16 +30,19 @@
         <router-link to="/game"><h5>立即體驗遊戲</h5></router-link>
       </div>
     </div>
+    <Chatbot />
   </div>
 </template>
 
 <script>
 import UserHeader from "../components/UserHeader.vue";
+import Chatbot from "../components/ChatbotUI.vue";
 
 export default {
   name: "Home",
   components: {
     UserHeader,
+    Chatbot,
   },
 };
 </script>

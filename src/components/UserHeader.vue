@@ -7,20 +7,20 @@
         </router-link>
       </li>
       <li>
-        <router-link class="py-2 d-none d-md-inline-block" to="/fqa"
+        <router-link class="py-2 d-none d-lg-inline-block" to="/fqa"
           >資訊查詢</router-link
         >
       </li>
       <li>
-        <router-link class="py-2 d-none d-md-inline-block" to="/game"
+        <router-link class="py-2 d-none d-lg-inline-block" to="/game"
           >遊戲專區</router-link
         >
       </li>
       <li>
-        <a href="" class="py-2 d-none d-md-inline-block">與我聯絡</a>
+        <a href="" class="py-2 d-none d-lg-inline-block">與我聯絡</a>
       </li>
       <li>
-        <router-link class="py-2 d-none d-md-inline-block" to="/admin/login"
+        <router-link class="py-2 d-none d-lg-inline-block" to="/admin/login"
           >管理者登入</router-link
         >
       </li>
@@ -29,6 +29,7 @@
 </template>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner:wght@400;500;600;700&family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap");
 @font-face {
   font-family: "辰宇落雁體 Thin";
   src: url("/fonts/ChenYuLuoYanTi-Thin.ttf") format("truetype"),
@@ -80,8 +81,5 @@ ul {
 
 .title {
   color: green;
-}
-
-@media (max-width: 992px) {
 }
 </style>
